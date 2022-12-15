@@ -5,7 +5,7 @@ from discord.ext import commands
 
 load_dotenv()
 
-TOKEN = "MTA1Mjg3NzkwMDEyODQ2NDkzOQ.G08nZ8.e_h71GQTxzR8kOb5JOLbKNFsSiUJ2vS39ql3m4"
+TOKEN = what ever the token is
 
 bot = commands.Bot(command_prefix="!", case_insensitive=True, intents = discord.Intents.all())
 
