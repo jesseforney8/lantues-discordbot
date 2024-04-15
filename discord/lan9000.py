@@ -41,5 +41,8 @@ async def on_message(message):
     if message.content.startswith('!wack'):
         msg = "His hair wack his gear wack his jewelry wack his foot stance wack the way he talks wack the that he doesn't even like to smile wack. me, i'm tight as fuck!"
         await message.channel.send(msg)
+    if message.content.startswith('!myria'):
+        msg = "Myria is gay. :wtf:"
+        await message.channel.send(msg, tts=True)
 
 bot.run(TOKEN)
