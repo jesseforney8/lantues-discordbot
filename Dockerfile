@@ -8,6 +8,6 @@ COPY discord/ .
 
 RUN pip install -r requirements.txt
 
-ENV TOKEN <token-value>
+ENV TOKEN
 
 CMD ["python3", "lan9000.py"]
