@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY discord/requirements.txt .
 
-COPY . .
+COPY discord/ .
 
 RUN pip install -r requirements.txt
 
