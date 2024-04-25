@@ -1,11 +1,13 @@
+import os
+import sys
 import discord
 from dotenv import load_dotenv
 from discord.ext import commands
 
-
+TOKEN = os.environ.get('TOKEN')
 load_dotenv()
 
-# TOKEN = what ever your token is
+
 
 bot = commands.Bot(command_prefix="!", case_insensitive=True, intents = discord.Intents.all())
 
