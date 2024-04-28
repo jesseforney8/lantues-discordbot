@@ -57,6 +57,8 @@ async def on_message(message):
 
         msg = random.choice(poop_facts)
         await message.channel.send(msg)
+
+    #roll dice function
     
 
 bot.run(TOKEN)
