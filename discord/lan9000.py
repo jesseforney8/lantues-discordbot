@@ -46,5 +46,8 @@ async def on_message(message):
     if message.content.startswith('!myria'):
         msg = "Myria is gay. :wtf:"
         await message.channel.send(msg, tts=True)
+    if message.content.startswith('!ass'):
+        msg = "Wanna eat my ass? hehe"
+        await message.channel.send(msg, tts=True)
 
 bot.run(TOKEN)
