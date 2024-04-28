@@ -106,7 +106,9 @@ async def on_message(message):
         
         await message.channel.send(pokedex_lookup(pokemon_name))
 
-
+    if message.content.startswith("!james"):
+        msg = "Fuck you James!"
+        await message.channel.send(msg)
 
 
 
