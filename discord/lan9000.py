@@ -86,6 +86,9 @@ async def on_message(message):
         poop_facts = ["Wanna eat my ass? hehe", "Poop is mostly water.",
                        "Trillions of bacteria live in your poop :)"," Fiber is your friend.", "The perfect poop looks like a sausage."
                        ]
+    if message.content.startswith('!meow'):
+        msg = "MEEEOWWW!"
+        await message.channel.send(msg, tts=True)
 
         msg = random.choice(poop_facts)
         await message.channel.send(msg)
