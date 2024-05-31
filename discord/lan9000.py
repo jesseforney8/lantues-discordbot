@@ -7,7 +7,7 @@ import random
 from datetime import datetime
 import pokebase as pd
 
-
+#pokemon lookup function
 def pokedex_lookup(name):
 
     try:
@@ -17,7 +17,7 @@ def pokedex_lookup(name):
         pokemon_type = ""
         p_type_list = []
 
-        
+        #iterates thru types and appends them to string withg comma
         for t in pokemon_.types:
             
             p_type_list.append(str(t.type))
@@ -36,7 +36,7 @@ def pokedex_lookup(name):
 
 
 
-
+#pull in token to start discord bot session
 TOKEN = os.environ.get('TOKEN')
 load_dotenv()
 
@@ -44,12 +44,12 @@ load_dotenv()
 
 bot = commands.Bot(command_prefix="!", case_insensitive=True, intents = discord.Intents.all())
 
-
+#starts discord message event
 @bot.event
 async def on_message(message):
     dict1 = {"!hi": "Tells you what the fuck you did.", "!darth": "Tells a dark and ironic story.", "!shrek": "Tells a story about shrek.", "!lan900": "The story of LAN9000", "!brad": "This is brad", "!wack": "This shit is wack!"}
 
-
+    #prevents bot from looping
     if message.author == bot.user:
         return
     if message.content.startswith('!help'):
@@ -57,7 +57,7 @@ async def on_message(message):
             for object in item:
                 await message.channel.send(object)
     
-
+    #random memes from !command
     if message.content.startswith('!hi'):
         msg = "What the fuck did you just fucking say about me, you little bitch? I'll have you know I graduated top of my class in the Navy Seals, and I've been involved in numerous secret raids on Al-Quaeda, and I have over 300 confirmed kills. I am trained in gorilla warfare and I'm the top sniper in the entire US armed forces. You are nothing to me but just another target. I will wipe you the fuck out with precision the likes of which has never been seen before on this Earth, mark my fucking words. You think you can get away with saying that shit to me over the Internet? Think again, fucker. As we speak I am contacting my secret network of spies across the USA and your IP is being traced right now so you better prepare for the storm, maggot. The storm that wipes out the pathetic little thing you call your life. You're fucking dead, kid. I can be anywhere, anytime, and I can kill you in over seven hundred ways, and that's just with my bare hands. Not only am I extensively trained in unarmed combat, but I have access to the entire arsenal of the United States Marine Corps and I will use it to its full extent to wipe your miserable ass off the face of the continent, you little shit. If only you could have known what unholy retribution your little 'clever' comment was about to bring down upon you, maybe you would have held your fucking tongue. But you couldn't, you didn't, and now you're paying the price, you goddamn idiot. I will shit fury all over you and you will drown in it. You're fucking dead, kiddo."
         await message.channel.send(msg)
@@ -82,13 +82,32 @@ async def on_message(message):
     if message.content.startswith('!ass'):
         msg = "Wanna eat my ass? hehe"
         await message.channel.send(msg, tts=True)
+    if message.content.startswith('!meow'):
+        msg = "MEEEOWWW!"
+        await message.channel.send(msg, tts=True)
+    if message.content.startswith("!james"):
+        james_list = ["Fuck you James!", "I love James!"
+                      
+                      
+                      
+                      
+                      
+                      ]
+        msg = random.choice(james_list)
+        await message.channel.send(msg)
+
+    #randomly picks poop fact from poop fact list    
     if message.content.startswith('!poop'):
         poop_facts = ["Wanna eat my ass? hehe", "Poop is mostly water.",
-                       "Trillions of bacteria live in your poop :)"," Fiber is your friend.", "The perfect poop looks like a sausage."
-                       ]
+                       "Trillions of bacteria live in your poop :)"," Fiber is your friend.", "The perfect poop looks like a sausage.",
+                       "Poop is mostly water", "Poop can look bloody from red food.", "You can’t digest corn.", "Babies have the strangest poop.",
+                        "Squatting helps you poop.", "Stepstools help you poop.", "Poop transplants are real.", "Jesse poops green way too much."
+                     ]
 
         msg = random.choice(poop_facts)
         await message.channel.send(msg)
+
+    #tells current time
     if message.content.startswith("!time"):
         now = datetime.now()
         if now.hour < 12:
@@ -101,14 +120,12 @@ async def on_message(message):
         current_time = f"{hour}:{now.minute}{day_night}"
         await message.channel.send(current_time)
 
+    #pulls pokemon info based off pokemon name after !pokemon command
     if message.content.startswith('!pokemon'):
         pokemon_name = message.content.split(" ")[-1]
-        
         await message.channel.send(pokedex_lookup(pokemon_name))
 
-    if message.content.startswith("!james"):
-        msg = "Fuck you James!"
-        await message.channel.send(msg)
+    
 
     if message.content.startswith("!weather"):
         msg = "https://bit.ly/lan_weather"
