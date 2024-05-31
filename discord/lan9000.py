@@ -110,6 +110,9 @@ async def on_message(message):
         msg = "Fuck you James!"
         await message.channel.send(msg)
 
+    if message.content.startswith("!weather"):
+        msg = "https://bit.ly/lan_weather"
+        await message.channel.send(msg)
 
 
 
