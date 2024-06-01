@@ -86,13 +86,7 @@ async def on_message(message):
         msg = "MEEEOWWW!"
         await message.channel.send(msg, tts=True)
     if message.content.startswith("!james"):
-        james_list = ["Fuck you James!", "I love James!"
-                      
-                      
-                      
-                      
-                      
-                      ]
+        james_list = ["Fuck you James!", "I love James!"]
         msg = random.choice(james_list)
         await message.channel.send(msg)
 
@@ -131,6 +125,13 @@ async def on_message(message):
         msg = "https://bit.ly/lan_weather"
         await message.channel.send(msg)
 
+    if message.content.startswith("!cody"):
+        cody_list = ["Cody is a cuck with a small pee pee!", "Cody is a black stallion with a big cock!"]
+        msg = random.choice(cody_list)
+        await message.channel.send(msg)
+    if message.content.startswith("!johnny"):
+        msg = "GSY GSY GSY"
+        await message.channel.send(msg)
 
 
 
