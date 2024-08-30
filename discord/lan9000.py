@@ -38,7 +38,7 @@ def pokedex_lookup(name):
 
 
 #pull in token to start discord bot session
-#TOKEN = os.environ.get('TOKEN')
+TOKEN = os.environ.get('TOKEN')
 load_dotenv()
 intents = discord.Intents.all()
 
@@ -134,40 +134,22 @@ async def on_message(message):
         msg = "GSY GSY GSY"
         await message.channel.send(msg)
 
-
-
-
-    #roll dice function
-    
-
-
-client = discord.Client(intents=intents)
-
-# Define the voice channel ID where you want to bonk users
-bonk_channel_id = 1279111855796654142  # Replace with your actual channel ID
-
-# Define the sound board sound path
-sound_path = "bonk.mp3"
-
-@client.event
-async def on_ready():
-    print(f'Logged in as {client.user}')
-
-@client.event
-async def on_message(message):
+#bonk functionality
     if message.content.startswith('!bonk'):
         try:
             user_to_bonk = message.mentions[0]
             if user_to_bonk.voice is None:
-                await message.channel.send("User is not in a voice channel.")
+                await message.channel.send("User is not in a voice channel we can't bonk them!")
                 return
 
             # Move user to bonk channel
+            bonk_channel_id = 1279111855796654142
             original_channel = user_to_bonk.voice.channel
-            voice_channel = client.get_channel(bonk_channel_id)
+            voice_channel = bot.get_channel(bonk_channel_id)
             await user_to_bonk.move_to(voice_channel)
 
             # Play sound
+            sound_path = "discord/bonk.mp3"
             voice_client = await voice_channel.connect()
             source = discord.FFmpegPCMAudio(sound_path)
             voice_client.play(source)
@@ -176,7 +158,7 @@ async def on_message(message):
             await message.channel.send(f"{user_to_bonk.mention} has been bonked!")
 
             # Wait for 5 seconds
-            await asyncio.sleep(5)
+            await asyncio.sleep(2)
 
             # Move user back to original channel
             #original_channel = user_to_bonk.voice.channel
@@ -187,5 +169,7 @@ async def on_message(message):
         except Exception as e:
             print(f"Error: {e}")
 
+
+    #roll dice function
 
 bot.run(TOKEN)
