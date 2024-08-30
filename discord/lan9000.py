@@ -1,6 +1,7 @@
 import os
 import sys
 import discord
+import asyncio
 from dotenv import load_dotenv
 from discord.ext import commands
 import random
@@ -39,10 +40,10 @@ def pokedex_lookup(name):
 #pull in token to start discord bot session
 TOKEN = os.environ.get('TOKEN')
 load_dotenv()
+intents = discord.Intents.all()
 
 
-
-bot = commands.Bot(command_prefix="!", case_insensitive=True, intents = discord.Intents.all())
+bot = commands.Bot(command_prefix="!", case_insensitive=True, intents = intents)
 
 #starts discord message event
 @bot.event
@@ -133,10 +134,42 @@ async def on_message(message):
         msg = "GSY GSY GSY"
         await message.channel.send(msg)
 
+#bonk functionality
+    if message.content.startswith('!bonk'):
+        try:
+            user_to_bonk = message.mentions[0]
+            if user_to_bonk.voice is None:
+                await message.channel.send("User is not in a voice channel we can't bonk them!")
+                return
 
+            # Move user to bonk channel
+            bonk_channel_id = 1279111855796654142
+            original_channel = user_to_bonk.voice.channel
+            voice_channel = bot.get_channel(bonk_channel_id)
+            await user_to_bonk.move_to(voice_channel)
+
+            # Play sound
+            sound_path = "discord/bonk.mp3"
+            voice_client = await voice_channel.connect()
+            source = discord.FFmpegPCMAudio(sound_path)
+            voice_client.play(source)
+
+            # Send a message after moving the user
+            await message.channel.send(f"{user_to_bonk.mention} has been bonked!")
+
+            # Wait for 5 seconds
+            await asyncio.sleep(2)
+
+            # Move user back to original channel
+            #original_channel = user_to_bonk.voice.channel
+            await user_to_bonk.move_to(original_channel)
+
+            # Disconnect from voice channel
+            await voice_client.disconnect()
+        except Exception as e:
+            print(f"Error: {e}")
 
 
     #roll dice function
-    
 
 bot.run(TOKEN)
