@@ -143,7 +143,8 @@ async def on_message(message):
                 return
 
             # Move user to bonk channel
-            bonk_channel_id = 1279111855796654142
+            #bonk_channel_id = 1279111855796654142
+            bonk_channel_id = 1279098714501415064
             original_channel = user_to_bonk.voice.channel
             voice_channel = bot.get_channel(bonk_channel_id)
             await user_to_bonk.move_to(voice_channel)
