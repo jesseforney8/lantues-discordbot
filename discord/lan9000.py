@@ -159,7 +159,7 @@ async def on_message(message):
             await message.channel.send(f"{user_to_bonk.mention} has been bonked!")
 
             # Wait for 5 seconds
-            await asyncio.sleep(4)
+            await asyncio.sleep(3)
 
             # Move user back to original channel
             #original_channel = user_to_bonk.voice.channel
