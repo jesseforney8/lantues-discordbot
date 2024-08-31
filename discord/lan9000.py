@@ -150,7 +150,7 @@ async def on_message(message):
             await user_to_bonk.move_to(voice_channel)
 
             # Play sound
-            sound_path = "bonk.mp3"
+            sound_path = "app/bonk.mp3"
             voice_client = await voice_channel.connect()
             source = discord.FFmpegPCMAudio(sound_path)
             voice_client.play(source)
