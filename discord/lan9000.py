@@ -139,7 +139,7 @@ async def on_message(message):
         try:
             user_to_bonk = message.mentions[0]
             if user_to_bonk.voice is None:
-                await message.channel.send("User is not in a voice channel we can't bonk them!")
+                await message.channel.send("User is not in a voice channel, we can't bonk them!")
                 return
 
             # Move user to bonk channel
