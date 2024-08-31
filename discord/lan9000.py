@@ -143,8 +143,8 @@ async def on_message(message):
                 return
 
             # Move user to bonk channel
-            #bonk_channel_id = 1279111855796654142
-            bonk_channel_id = 1279098714501415064
+            bonk_channel_id = 1279111855796654142
+            #bonk_channel_id = 1279098714501415064
             original_channel = user_to_bonk.voice.channel
             voice_channel = bot.get_channel(bonk_channel_id)
             await user_to_bonk.move_to(voice_channel)
@@ -159,7 +159,7 @@ async def on_message(message):
             await message.channel.send(f"{user_to_bonk.mention} has been bonked!")
 
             # Wait for 5 seconds
-            await asyncio.sleep(2)
+            await asyncio.sleep(4)
 
             # Move user back to original channel
             #original_channel = user_to_bonk.voice.channel
