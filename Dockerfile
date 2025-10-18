@@ -8,7 +8,9 @@ COPY discord/ .
 
 RUN pip install -r requirements.txt
 
-RUN apt-get update -qq && apt-get install ffmpeg -y
+RUN apt-get update -qq 
+
+RUN apt-get install ffmpeg -y
 
 ENV TOKEN <token-value>
 
