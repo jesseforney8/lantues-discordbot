@@ -8,6 +8,8 @@ COPY discord/ .
 
 RUN pip install -r requirements.txt
 
+RUN apt-get install -y --no-install-recommends ca-certificates
+
 RUN apt-get update
 
 RUN apt-get install ffmpeg -y
