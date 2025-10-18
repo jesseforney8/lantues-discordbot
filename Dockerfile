@@ -9,8 +9,10 @@ COPY discord/ .
 RUN pip install -r requirements.txt
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends ca-certificates && \
-    apt-get install ffmpeg -y
+    apt-get install -y --no-install-recommends \
+        ffmpeg \
+        ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 
 
 ENV TOKEN <token-value>
